@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MotoBands</string>
+    <string name="best_motoband">最好的骑士都在这里</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="txt_home">首页</string>
+    <string name="txt_equipment">装备</string>
+    <string name="select_car">选车</string>
+    <string name="personal">个人中心</string>
+</resources>
