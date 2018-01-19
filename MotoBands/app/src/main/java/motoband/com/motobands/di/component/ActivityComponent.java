@@ -6,6 +6,7 @@ import dagger.Component;
 import motoband.com.motobands.MainActivity;
 import motoband.com.motobands.di.module.ActivityModule;
 import motoband.com.motobands.di.scope.ActivityScope;
+import motoband.com.motobands.mvp.ui.activity.GuideActivity;
 import motoband.com.motobands.mvp.ui.activity.SplashActivity;
 import motoband.com.motobands.mvp.ui.activity.WelcomeActivity;
 
@@ -20,6 +21,8 @@ public interface ActivityComponent {
     Activity getActivity();
 
     void inject(WelcomeActivity welcomeActivity);
+
+    void inject(GuideActivity guideActivity);
 
     void inject(SplashActivity splashActivity);
 

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_foreground_black"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/rl_current_car"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:layout_marginLeft="@dimen/dp15"
+        android:layout_marginRight="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp20"
+        android:background="@drawable/moment_shape">
+
+        <ImageView
+            android:id="@+id/iv_motobrandparent_pic"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginStart="@dimen/dp10"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/motor_default_img" />
+
+        <TextView
+            android:id="@+id/tv_brand_model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dp30"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp30"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_toEndOf="@id/iv_motobrandparent_pic"
+            android:layout_toRightOf="@id/iv_motobrandparent_pic"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/M969696"
+            android:textSize="@dimen/sp12" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:contentDescription="@null"
+            android:src="@mipmap/cell_right_arrow" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp63">
+
+        <ImageView
+            android:id="@+id/iv_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@null"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingRight="@dimen/dp15"
+            android:src="@mipmap/img_topboard" />
+
+        <ImageView
+            android:id="@+id/img_current_medal"
+            android:layout_width="@dimen/dp18"
+            android:layout_height="@dimen/dp18"
+            android:layout_above="@+id/txt_next_km"
+            android:layout_alignLeft="@+id/txt_current_km"
+            android:layout_alignStart="@+id/txt_current_km"
+            android:contentDescription="@null" />
+
+        <ImageView
+            android:id="@+id/img_next_medal"
+            android:layout_width="@dimen/dp18"
+            android:layout_height="@dimen/dp18"
+            android:layout_marginTop="@dimen/dp15"
+            android:layout_toLeftOf="@id/iv_rank"
+            android:layout_toStartOf="@id/iv_rank"
+            android:contentDescription="@null" />
+
+        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+            android:id="@+id/progress_km"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp8"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp22"
+            android:layout_toEndOf="@id/img_current_medal"
+            android:layout_toLeftOf="@id/img_next_medal"
+            android:layout_toRightOf="@id/img_current_medal"
+            android:layout_toStartOf="@id/img_next_medal"
+            app:rcBackgroundColor="@color/M2B2D2E"
+            app:rcBackgroundPadding="@dimen/dp2"
+            app:rcProgressColor="@color/M45E3BF"
+            app:rcRadius="@dimen/dp20"
+            app:rcSecondaryProgressColor="@color/main_background_black" />
+
+        <TextView
+            android:id="@+id/txt_current_km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_current_medal"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginStart="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp3"
+            android:text="0.0km"
+            android:textColor="@color/M969696"
+            android:textSize="@dimen/sp12" />
+
+        <TextView
+            android:id="@+id/txt_next_km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/img_next_medal"
+            android:layout_alignRight="@id/img_next_medal"
+            android:layout_below="@id/img_next_medal"
+            android:layout_marginTop="@dimen/dp3"
+            android:text="0.0km"
+            android:textColor="@color/M969696"
+            android:textSize="@dimen/sp12" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp44"
+        android:background="@color/M2B2D2E">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tablayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            app:tabBackground="@color/M2B2D2E"
+            app:tabIndicatorColor="@color/MDCDCDC"
+            app:tabIndicatorHeight="@dimen/dp1"
+            app:tabPaddingEnd="@dimen/dp15"
+            app:tabPaddingStart="@dimen/dp15"
+            app:tabSelectedTextColor="@color/MDCDCDC"
+            app:tabTextAppearance="@style/TabLayoutTextStyleChooseCar"
+            app:tabTextColor="@color/M969696" />
+
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

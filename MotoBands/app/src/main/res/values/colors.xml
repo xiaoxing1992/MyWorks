@@ -29,12 +29,18 @@
     <color name="main_foreground_black">#FF252728</color>
     <color name="title_bar">#FF313434</color>
 
+    <color name="M2B2D2E">#FF2B2D2E</color>
+
+
 
     <color name="MFFCE00">#FFFFCE00</color>
     <color name="M969696">#FF969696</color>
     <color name="MF1403C">#FFF1403C</color>
     <color name="M313434">#FF313434</color>
     <color name="ME6E6E6">#FFE6E6E6</color>
+
+    <color name="MDCDCDC">#FFDCDCDC</color>
+    <color name="M45E3BF">#FF45E3BF</color>
 
     <color name="MFFFFFF">#ffffff</color>
 

@@ -15,7 +15,7 @@ import motoband.com.motobands.mvp.presenter.MainPresenter;
 import motoband.com.motobands.mvp.ui.fragment.ChooseCarFragment;
 import motoband.com.motobands.mvp.ui.fragment.MallFragment;
 import motoband.com.motobands.mvp.ui.fragment.MyselfFragment;
-import motoband.com.motobands.mvp.ui.fragment.RidingFragment;
+import motoband.com.motobands.mvp.ui.fragment.RideFragment;
 import motoband.com.motobands.mvp.ui.fragment.TimeLineFragment;
 import motoband.com.motobands.utils.StatusBarManager;
 
@@ -25,7 +25,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> {
     RadioGroup rg_main;
     private TimeLineFragment timeLineFragment;
     private ChooseCarFragment chooseCarFragment;
-    private RidingFragment ridingFragment;
+    private RideFragment rideFragment;
     private MallFragment mallFragment;
     private MyselfFragment myselfFragment;
 
@@ -65,26 +65,26 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> {
         if (savedStated != null) {
             timeLineFragment = (TimeLineFragment) getSupportFragmentManager().findFragmentByTag("timeLineFragment");
             chooseCarFragment = (ChooseCarFragment) getSupportFragmentManager().findFragmentByTag("chooseCarFragment");
-            ridingFragment = (RidingFragment) getSupportFragmentManager().findFragmentByTag("ridingFragment");
+            rideFragment = (RideFragment) getSupportFragmentManager().findFragmentByTag("rideFragment");
             mallFragment = (MallFragment) getSupportFragmentManager().findFragmentByTag("mallFragment");
             myselfFragment = (MyselfFragment) getSupportFragmentManager().findFragmentByTag("myselfFragment");
-            switchFragment(BaseConstant.RB_HOME);
+            switchFragment(BaseConstant.RB_RIDING);
 
         } else {
             timeLineFragment = TimeLineFragment.newInstance();
             chooseCarFragment = ChooseCarFragment.newInstance();
-            ridingFragment = RidingFragment.newInstance();
+            rideFragment = RideFragment.newInstance();
             mallFragment = MallFragment.newInstance();
             myselfFragment = MyselfFragment.newInstance();
             getSupportFragmentManager()
                     .beginTransaction()
                     .add(R.id.fl_container_main, timeLineFragment, "timeLineFragment")
                     .add(R.id.fl_container_main, chooseCarFragment, "chooseCarFragment")
-                    .add(R.id.fl_container_main, ridingFragment, "ridingFragment")
+                    .add(R.id.fl_container_main, rideFragment, "rideFragment")
                     .add(R.id.fl_container_main, mallFragment, "mallFragment")
                     .add(R.id.fl_container_main, myselfFragment, "myselfFragment")
                     .commit();
-            switchFragment(BaseConstant.RB_HOME);
+            switchFragment(BaseConstant.RB_RIDING);
 
         }
     }
@@ -132,12 +132,12 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> {
                 transaction
                         .show(timeLineFragment)
                         .hide(chooseCarFragment)
-                        .hide(ridingFragment)
+                        .hide(rideFragment)
                         .hide(mallFragment)
                         .hide(myselfFragment);
                 timeLineFragment.setUserVisibleHint(true);
                 chooseCarFragment.setUserVisibleHint(false);
-                ridingFragment.setUserVisibleHint(false);
+                rideFragment.setUserVisibleHint(false);
                 mallFragment.setUserVisibleHint(false);
                 myselfFragment.setUserVisibleHint(false);
                 break;
@@ -145,23 +145,23 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> {
                 transaction
                         .show(chooseCarFragment)
                         .hide(timeLineFragment)
-                        .hide(ridingFragment)
+                        .hide(rideFragment)
                         .hide(mallFragment)
                         .hide(myselfFragment);
                 chooseCarFragment.setUserVisibleHint(true);
-                ridingFragment.setUserVisibleHint(false);
+                rideFragment.setUserVisibleHint(false);
                 timeLineFragment.setUserVisibleHint(false);
                 mallFragment.setUserVisibleHint(false);
                 myselfFragment.setUserVisibleHint(false);
                 break;
             case BaseConstant.RB_RIDING:
                 transaction
-                        .show(ridingFragment)
+                        .show(rideFragment)
                         .hide(chooseCarFragment)
                         .hide(timeLineFragment)
                         .hide(mallFragment)
                         .hide(myselfFragment);
-                ridingFragment.setUserVisibleHint(true);
+                rideFragment.setUserVisibleHint(true);
                 chooseCarFragment.setUserVisibleHint(false);
                 mallFragment.setUserVisibleHint(false);
                 timeLineFragment.setUserVisibleHint(false);
@@ -170,12 +170,12 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> {
             case BaseConstant.RB_EQUIPMENT:
                 transaction
                         .show(mallFragment)
-                        .hide(ridingFragment)
+                        .hide(rideFragment)
                         .hide(chooseCarFragment)
                         .hide(myselfFragment)
                         .hide(timeLineFragment);
                 mallFragment.setUserVisibleHint(true);
-                ridingFragment.setUserVisibleHint(false);
+                rideFragment.setUserVisibleHint(false);
                 chooseCarFragment.setUserVisibleHint(false);
                 myselfFragment.setUserVisibleHint(false);
                 timeLineFragment.setUserVisibleHint(false);
@@ -186,12 +186,12 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> {
                         .show(myselfFragment)
                         .hide(chooseCarFragment)
                         .hide(mallFragment)
-                        .hide(ridingFragment)
+                        .hide(rideFragment)
                         .hide(timeLineFragment);
                 myselfFragment.setUserVisibleHint(true);
                 chooseCarFragment.setUserVisibleHint(false);
                 mallFragment.setUserVisibleHint(false);
-                ridingFragment.setUserVisibleHint(false);
+                rideFragment.setUserVisibleHint(false);
                 timeLineFragment.setUserVisibleHint(false);
                 break;
         }

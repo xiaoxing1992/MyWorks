@@ -22,7 +22,7 @@ public class MallFragment extends BaseMVPFragment<TimeLinePresenter> implements 
 
     @Override
     protected int getLayoutId() {
-        return R.layout.test_item;
+        return R.layout.fragment_ride;
     }
 
     @Override
