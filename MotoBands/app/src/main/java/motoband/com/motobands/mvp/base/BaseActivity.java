@@ -11,7 +11,6 @@ import android.view.WindowManager;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import me.yokeyword.fragmentation.SupportActivity;
 import motoband.com.motobands.R;
 import motoband.com.motobands.utils.PreUtils;
 import motoband.com.motobands.utils.ScreenUtil;
@@ -23,7 +22,7 @@ import motoband.com.motobands.widget.theme.Theme;
  * 作用：这是一个普通的模板模式
  */
 
-public abstract class BaseActivity extends SupportActivity {
+public abstract class BaseActivity extends Activity {
 
     //获取上下文
     protected Activity mContext;

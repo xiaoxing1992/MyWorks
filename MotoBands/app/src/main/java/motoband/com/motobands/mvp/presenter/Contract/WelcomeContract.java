@@ -1,6 +1,7 @@
 package motoband.com.motobands.mvp.presenter.Contract;
 
 
+import motoband.com.motobands.model.bean.AdvertisingModel;
 import motoband.com.motobands.mvp.base.BasePresenter;
 import motoband.com.motobands.mvp.base.BaseView;
 
@@ -12,13 +13,17 @@ import motoband.com.motobands.mvp.base.BaseView;
 public interface WelcomeContract {
 
     interface View extends BaseView {
-
-
         void jumpToActivity();
+
+        void jumpToActivity(boolean flag, AdvertisingModel t);
+
+        void jumpToActivity(AdvertisingModel t);
     }
+
 
     interface Presenter extends BasePresenter<View> {
         void getWelcomeData();
+
         void setRequestPermissions();
     }
 }

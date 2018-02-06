@@ -2,6 +2,7 @@ package motoband.com.motobands.mvp.presenter;
 
 
 import android.app.AlertDialog;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.tbruyelle.rxpermissions2.Permission;
@@ -15,10 +16,17 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import motoband.com.motobands.model.bean.AdvertisingModel;
+import motoband.com.motobands.model.constants.SystemConstants;
+import motoband.com.motobands.model.manager.AccountManager;
+import motoband.com.motobands.mvp.base.MyApplication;
 import motoband.com.motobands.mvp.base.RxPresenter;
 import motoband.com.motobands.mvp.presenter.Contract.WelcomeContract;
 import motoband.com.motobands.mvp.ui.activity.WelcomeActivity;
 import motoband.com.motobands.utils.RxUtil;
+import motoband.com.motobands.utils.SystemUtil;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -32,6 +40,7 @@ public class WelcomePresenter extends RxPresenter<WelcomeContract.View> implemen
     private static final int COUNT_DOWN_TIME = 1000;
 
     private boolean denied;
+    private AdvertisingModel advertisingModel;
 
     @Inject
     public WelcomePresenter() {
@@ -41,7 +50,7 @@ public class WelcomePresenter extends RxPresenter<WelcomeContract.View> implemen
 
     @Override
     public void getWelcomeData() {
-
+        advertisingModel = new AdvertisingModel();
     }
 
     @Override
@@ -116,7 +125,23 @@ public class WelcomePresenter extends RxPresenter<WelcomeContract.View> implemen
 
             @Override
             public void onNext(@NonNull Long aLong) {
-                mView.jumpToActivity();
+
+                SharedPreferences sp = MyApplication.getContext().getSharedPreferences(SystemConstants.MOTOBAND, MODE_PRIVATE);
+                String lastVersionName = sp.getString(SystemConstants.LAST_VERSION_NAME, "");
+                String versionName = SystemUtil.getVersionName();
+                if (lastVersionName.equals(versionName)) {
+                    if (AccountManager.getInstance().needLogin()) {
+                        mView.jumpToActivity();
+                    } else {
+                        mView.jumpToActivity(advertisingModel);
+                    }
+                } else {
+                    mView.jumpToActivity(true, advertisingModel);
+                    //activity切换时的overridePendingTransition动画效
+                    sp.edit().putString("last_version_name", versionName).apply();
+                }
+
+
             }
 
             @Override

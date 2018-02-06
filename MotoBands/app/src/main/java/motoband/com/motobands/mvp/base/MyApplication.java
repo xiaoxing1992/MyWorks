@@ -2,6 +2,7 @@ package motoband.com.motobands.mvp.base;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.support.v7.app.AppCompatDelegate;
 
 import java.util.HashSet;
@@ -23,11 +24,22 @@ import motoband.com.motobands.model.db.RealmHelper;
 
 public class MyApplication extends Application {
 
-    private static MyApplication instance;
+    private static MyApplication mInstance;
+    private static Context context;
     private Set<Activity> allActivities;
 
+    public MyApplication() {
+        mInstance = this;
+    }
+
     public static MyApplication getInstance() {
-        return instance;
+        if (mInstance != null) {
+            return mInstance;
+        } else {
+            mInstance = new MyApplication();
+            mInstance.onCreate();
+            return mInstance;
+        }
     }
 
     static {
@@ -38,7 +50,8 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        instance = this;
+        mInstance = this;
+        context = getApplicationContext();
         //蒲公英crash上报
 //        PgyCrashManager.register(this);
         //初始化内存泄漏检测
@@ -86,12 +99,16 @@ public class MyApplication extends Application {
         Realm.setDefaultConfiguration(realmConfiguration);
     }
 
+    public static Context getContext() {
+        return context;
+    }
+
     public static AppComponent appComponent;
 
     public static AppComponent getAppComponent() {
         if (appComponent == null) {
             appComponent = DaggerAppComponent.builder()
-                    .appModule(new AppModule(instance))
+                    .appModule(new AppModule(mInstance))
                     .httpModule(new HttpModule())
                     .build();
         }

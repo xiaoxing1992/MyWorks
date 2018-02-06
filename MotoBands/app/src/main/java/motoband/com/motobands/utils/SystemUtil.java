@@ -3,6 +3,8 @@ package motoband.com.motobands.utils;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.text.TextUtils;
@@ -17,6 +19,15 @@ import motoband.com.motobands.mvp.base.MyApplication;
  * Created by codeest on 2016/8/4.
  */
 public class SystemUtil {
+
+    /**
+     * 获取上下文对象
+     *
+     * @return 上下文对象
+     */
+    public static Context getContext() {
+        return MyApplication.getContext();
+    }
 
     /**
      * 检查WIFI是否连接
@@ -108,6 +119,22 @@ public class SystemUtil {
             } catch (IOException exception) {
                 exception.printStackTrace();
             }
+        }
+        return null;
+    }
+
+    /**
+     * 获取版本名称
+     *
+     * @return
+     */
+    public static String getVersionName() {
+        String packageName = getContext().getPackageName();
+        try {
+            PackageInfo packageInfo = getContext().getPackageManager().getPackageInfo(packageName, 0);
+            return packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
         }
         return null;
     }
